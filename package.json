@@ -159,13 +159,10 @@
   },
   "codegenConfig": {
     "name": "RNTerraRTReactSpec",
-    "type": "all",
+    "type": "modules",
     "jsSrcsDir": "src",
     "android": {
       "javaPackageName": "com.terrartreact"
-    },
-    "ios": {
-      "componentProvider": "legacy"
     }
   }
 }

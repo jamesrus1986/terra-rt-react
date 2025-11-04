@@ -1,38 +1,27 @@
 import React from 'react';
-import {
-  Platform,
-  type ViewProps,
-  type NativeSyntheticEvent,
-} from 'react-native';
-import BLWidgetNativeComponent, {
-  type SuccessfulConnectionEvent,
-} from './BLWidgetNativeComponent';
+import { requireNativeComponent, Platform, View } from 'react-native';
+import type { ViewProps } from 'react-native';
+
+export interface SuccessfulConnectionEvent {
+  success: boolean;
+}
 
 export interface BLWidgetProps extends ViewProps {
   withCache?: boolean;
-  onSuccessfulConnection?: (event: SuccessfulConnectionEvent) => void;
+  onSuccessfulConnection?: (event: {
+    nativeEvent: SuccessfulConnectionEvent;
+  }) => void;
 }
 
-export const BLWidget: React.FC<BLWidgetProps> = ({
-  onSuccessfulConnection,
-  ...props
-}) => {
+const NativeBLWidget =
+  Platform.OS === 'ios'
+    ? requireNativeComponent<BLWidgetProps>('BLWidget')
+    : View;
+
+export default function BLWidget(props: BLWidgetProps) {
   if (Platform.OS !== 'ios') {
     return null;
   }
 
-  const handleSuccessfulConnection = (
-    event: NativeSyntheticEvent<SuccessfulConnectionEvent>
-  ) => {
-    if (onSuccessfulConnection) {
-      onSuccessfulConnection(event.nativeEvent);
-    }
-  };
-
-  return (
-    <BLWidgetNativeComponent
-      {...props}
-      onSuccessfulConnection={handleSuccessfulConnection}
-    />
-  );
-};
+  return <NativeBLWidget {...props} />;
+}
