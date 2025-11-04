@@ -22,6 +22,7 @@ import {
   disconnect,
   getUserId,
   startDeviceScanWithCallback,
+  BLWidget,
 } from 'react-native-terra-rt-react';
 import { config } from './config';
 import type {
@@ -30,7 +31,6 @@ import type {
   Update,
 } from 'react-native-terra-rt-react';
 import { Connections, DataTypes } from 'react-native-terra-rt-react';
-import { BLWidget } from './iOSBleWidget';
 
 export default function App() {
   const [initialised, setInitialised] = React.useState<Boolean>(false);

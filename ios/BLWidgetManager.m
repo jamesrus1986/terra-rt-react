@@ -27,7 +27,7 @@
 #endif
 
 #ifdef RCT_NEW_ARCH_ENABLED
-@interface RCT_EXTERN_REMAP_MODULE(BLWidgetManager, BLWidgetManager, RCTViewManager)
+@interface RCT_EXTERN_MODULE(BLWidgetManager, RCTViewManager)
 #else
 @interface RCT_EXTERN_MODULE(BLWidgetManager, RCTViewManager)
 #endif
@@ -38,7 +38,7 @@ RCT_EXPORT_VIEW_PROPERTY(onSuccessfulConnection, RCTDirectEventBlock)
 @end
 
 #ifdef RCT_NEW_ARCH_ENABLED
-Class RCTViewManagerClassForBLWidgetManager(void)
+Class RCTViewManagerClassForBLWidget(void)
 {
 	return BLWidgetManager.class;
 }

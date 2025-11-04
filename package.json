@@ -156,5 +156,16 @@
         }
       ]
     ]
+  },
+  "codegenConfig": {
+    "name": "RNTerraRTReactSpec",
+    "type": "all",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.terrartreact"
+    },
+    "ios": {
+      "componentProvider": "legacy"
+    }
   }
 }

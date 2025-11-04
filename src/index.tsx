@@ -4,6 +4,8 @@ import type { Connections, DataTypes } from './enums';
 
 export * from './types';
 export * from './enums';
+export { BLWidget } from './BLWidget';
+export type { BLWidgetProps } from './BLWidget';
 
 const LINKING_ERROR =
   `The package 'react-native-terra-rt-react' doesn't seem to be linked. Make sure: \n\n` +
@@ -53,6 +55,7 @@ export function startDeviceScanWithCallback(
   connections: Connections
 ): Promise<SuccessMessage> {
   if (Platform.OS === 'ios') {
+    console.log('Using Bluetooth scan with callback on iOS');
     return TerraRtReact.startBluetoothScan(connections);
   } else {
     return TerraRtReact.startDeviceScanWithCallback(connections);
