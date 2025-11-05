@@ -18,7 +18,7 @@ const NativeBLWidget =
     ? requireNativeComponent<BLWidgetProps>('BLWidget')
     : View;
 
-export default function BLWidget(props: BLWidgetProps) {
+export function BLWidget(props: BLWidgetProps) {
   if (Platform.OS !== 'ios') {
     return null;
   }
